@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12 col-md-offset-2">
+
+      <form (ngSubmit)="onSendNotification(form)" #form="ngForm">
+
+        <div class="form-group">
+          <label for="title">Notification Title</label>
+          <input class="form-control" id="title" name="title" ngModel type="text" placeholder="Notification Title" #title="ngModel" required/>
+          <p class="help-block" *ngIf="!title.valid && title.touched">*Please enter a Notification Title.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message Text</label>
+          <textarea id="message" name="message" ngModel class="form-control" #message="ngModel" rows="5" required></textarea>
+          <p class="help-block" *ngIf="!message.valid && message.touched">*Please enter a Notification Message.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="imageURL">Image URL</label>
+          <input class="form-control" id="imageURL" name="imageURL" ngModel type="text" placeholder="Image URL" #imageURL="ngModel" required/>
+          <p class="help-block" *ngIf="!imageURL.valid && imageURL.touched">*Please enter an Image URL.</p>
+        </div>
+
+        <img [src]="imageURL.value" class="img-responsive"/>  
+
+        <div class="form-group">
+          <label for="topic">Notification Topic</label>
+          <input class="form-control" id="topic" type="text" name="topic" [ngModel]="topicText" placeholder="Notification Topic" #topic="ngModel" required/>
+          <p class="help-block" *ngIf="!topic.valid && topic.touched">*Please enter a Notification Topic.</p>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!form.valid">Send Notification</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
